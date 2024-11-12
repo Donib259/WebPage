@@ -7,27 +7,44 @@
     <style>
         /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             color: #333;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background: transparent;
         }
-        
+    
+        /* Background image as a separate layer */
+        body::before {
+            content: "";
+            position: fixed;                   /* Keeps background fixed during scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://tinypic.host/images/2024/07/06/IMG_20240618_015114.png'); /* Replace with your image URL */
+            background-size: cover;            /* Ensures the image covers the entire viewport */
+            background-position: center;       /* Centers the image */
+            background-repeat: no-repeat;
+            opacity: 0.2;                     /* Light watermark effect */
+            z-index: -1;                       /* Positions it behind all content */
+        }
+    
         .container {
             max-width: 1000px;
             margin: 20px auto;
             padding: 20px;
-            background: #fff;
+            background: transparent;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-
+    
         h1 {
             text-align: center;
             color: #4a90e2;
         }
-
+    
         /* Navigation */
         .nav {
             display: flex;
@@ -36,7 +53,7 @@
             padding: 10px 0;
             margin-bottom: 20px;
         }
-
+    
         .nav a {
             margin: 0 15px;
             color: #fff;
@@ -44,54 +61,66 @@
             font-weight: bold;
             transition: color 0.3s ease;
         }
-
+    
         .nav a:hover {
             color: #ffd700; /* Change hover color */
             text-decoration: underline;
         }
+    /* Adjust background image size for larger screens */
+    @media (min-width: 1200px) {
+    body::before {
+        background-size: 45%;      /* Reduce size to 50% of the viewport width */
+    }
+}
 
+    /* For even larger screens */
+     @media (min-width: 1600px) {
+    body::before {
+        background-size: 35%;      /* Reduce to 40% on very large screens */
+    }
+    }
         /* Media Query for Responsiveness */
         @media (max-width: 768px) {
             .nav {
                 flex-direction: column;
                 align-items: center;
             }
-
+    
             .nav a {
                 margin: 10px 0;
             }
         }
-
+    
         /* Class Section */
         .class-section {
             margin-top: 20px;
         }
-
+    
         .class-title {
             font-size: 1.5em;
             color: #4a90e2;
             margin-bottom: 10px;
         }
-
+    
         /* Subject List */
         .subject {
             margin: 10px 0;
         }
-
+    
         .subject h3 {
             font-size: 1.2em;
             margin-bottom: 5px;
         }
-
+    
         .subject ul {
             list-style-type: none;
             padding-left: 0;
         }
-
+    
         .subject ul li {
             margin: 5px 0;
         }
-
+    
         .subject a {
             color: #333;
             text-decoration: none;
@@ -101,16 +130,37 @@
             border: 2px solid transparent;
             border-radius: 4px;
         }
-
+    
         .subject a:hover {
             color: #fff;
             background-color: #4a90e2;
             border-color: #4a90e2;
         }
-        .div p {
-            background-color: #4a90e2;   
+    
+        /* Additional Media Queries for Smaller Screens */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+    
+            h1 {
+                font-size: 1.8em;
+            }
+    
+            .class-title {
+                font-size: 1.3em;
+            }
+    
+            .subject h3 {
+                font-size: 1em;
+            }
+    
+            .subject a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
         }
-    </style>
+    </style>    
 </head>
 <body>
     <div class="container">
